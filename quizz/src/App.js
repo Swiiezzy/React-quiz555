@@ -91,8 +91,8 @@ setStart(item=>!item)
 
 
 
-    <div>
-        { start ? <div>{rQuestion}</div>: <button onClick={Start}>START</button>}
+    <div className='main '>
+        { start ? <div>{rQuestion}</div>: <div className="center"> <button class="button-85" role="button" onClick={Start}>START</button></div>}
     </div>
 
    
