@@ -15,7 +15,6 @@ export default function Question(props) {
 
     return (
         <div className="question--folder--main button-85">
-
             <h2>{question}</h2>
             <div className="question--folder ">
             {rQuestion}

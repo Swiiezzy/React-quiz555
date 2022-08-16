@@ -18,7 +18,7 @@ function App() {
   const [questions, setQuestions] = React.useState([])
 
   React.useEffect(function () {
-    fetch('https://opentdb.com/api.php?amount=5&type=multiple')
+    fetch('https://opentdb.com/api.php?amount=10&type=multiple')
       .then(res => res.json())
       .then(data => data.results.map(item => {
         return {
