@@ -2,11 +2,12 @@ import React from "react"
 
 
 export default function Question(props) {
+    const {click , id} = props
+    const { answers, category, difficulty, question} = props.question
 
-    console.log(props)
-    const { answers, category, difficulty, question } = props.question
 
-    const rQuestion = answers.map(item => <p className="question ">{item.answer}</p>)
+
+    const rQuestion = answers.map(item => <p  key={item.answer} onClick={()=>click(question,item.answer)} className="question">{item.answer}</p>)
 
 
 

@@ -3,16 +3,7 @@ import React from "react"
 import Question from "./Component/question"
 
 
-
-
-
-
-
-
-
-
 function App() {
-
   const [start, setStart] = React.useState(false)
   const [render, setRender] = React.useState([])
   const [questions, setQuestions] = React.useState([])
@@ -48,7 +39,7 @@ function App() {
               category: item.category,
               difficulty: item.difficulty,
               question: item.question,
-              answers: shuffle(item.answers)
+              answers: shuffle(item.answers) // Random roll arr
             }
           })
         })
@@ -60,7 +51,7 @@ function App() {
 
 
 
-
+  // Random roll arr
   function shuffle(array) {
     let currentIndex = array.length, randomIndex;
     while (currentIndex !== 0) {
@@ -72,17 +63,39 @@ function App() {
     return array;
   }
 
- 
-  const rQuestion = questions.map(item =>{return (
-     <Question question={item} key={item.question} /> 
-  )}
- 
+  // Render Question 
+  const rQuestion = questions.map(item => {
+    return (
+      <Question
+        question={item}
+        key={item.question}
+        id={item.question}
+        click={click} />
+    )
+  }
   )
 
 
-function Start(){
-setStart(item=>!item)
-}
+  function click(id, idanswer) {
+    console.log(idanswer)
+    console.log(questions)
+    const check = questions.map(item => {
+      if (item.question === id) {
+        console.log("mam")
+        item.answers.map(item => {
+          if (item.answer === idanswer) { console.log("tutaj zmieniam na true") }
+          else { console.log("tutaj zmieniam na false") }
+
+        })
+      }
+      else { console.log("nie mam") }
+    })
+    console.log(check)
+  }
+
+  function Start() {
+    setStart(item => !item)
+  }
 
 
 
@@ -92,10 +105,10 @@ setStart(item=>!item)
 
 
     <div className='main '>
-        { start ? <div>{rQuestion}</div>: <div className="center"> <button class="button-85" role="button" onClick={Start}>START</button></div>}
+      {start ? <div>{rQuestion}</div> : <div className="center"> <button className="button-85" role="button" onClick={Start}>START</button></div>}
     </div>
 
-   
+
   )
 }
 
