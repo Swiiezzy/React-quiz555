@@ -7,9 +7,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: white;
   background: #1c1c1c;
-	max-width: 1080px; 
-	margin: 0 auto ;
-  
+  max-width: 1080px;
+  margin: 0 auto;
+
 }
 
 code {
@@ -26,14 +26,14 @@ code {
   height: 100vh;
 }
 
-.center button{
+.center button {
   font-size: 3rem;
   padding: 20px;
 }
 
 
-.question--folder--main{
-  margin:2rem 0;
+.question--folder--main {
+  margin: 2rem 0;
 }
 
 
@@ -43,11 +43,12 @@ code {
 .main {
 
   display: flex;
+
   justify-content: center;
   align-items: center;
   margin: 1rem 10rem;
   text-align: center;
- 
+
 }
 
 .question--folder {
@@ -55,13 +56,16 @@ code {
   display: flex;
   flex-direction: column;
 }
-.info{
+
+.info {
   display: flex;
   justify-content: space-between;
-font-size: 0.8rem;
+  font-size: 0.8rem;
 }
-.info p, h2{ 
-  margin:0;
+
+.info p,
+h2 {
+  margin: 0;
   padding: 0;
 }
 
@@ -75,10 +79,11 @@ font-size: 0.8rem;
 }
 
 .question--folder .question:hover {
-  color:blue;
+  color: orange;
   font-weight: 700;
   letter-spacing: 2px;
   transition: 500ms;
+
 }
 
 
@@ -102,18 +107,16 @@ font-size: 0.8rem;
 
 .button-85:before {
   content: "";
-  background: linear-gradient(
-    45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
-  );
+  background: linear-gradient(45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000);
   position: absolute;
   top: -2px;
   left: -2px;
@@ -132,9 +135,11 @@ font-size: 0.8rem;
   0% {
     background-position: 0 0;
   }
+
   50% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: 0 0;
   }
@@ -150,4 +155,19 @@ font-size: 0.8rem;
   left: 0;
   top: 0;
   border-radius: 10px;
+}
+
+
+.navbar {
+  font-weight: 700;
+  letter-spacing: 2px;
+  display: flex;
+  flex-direction: column;
+  color: rgb(195, 226, 17);
+  display: flex;
+ 
+  justify-content: center;
+  width: 400px;
+  margin: 0 auto;
+
 }

@@ -1,15 +1,16 @@
 import './App.css';
 import React from "react"
 import Question from "./Component/question"
-
+import NavBar from './Component/navbar';
 
 function App() {
   const [start, setStart] = React.useState(false)
   const [render, setRender] = React.useState([])
   const [questions, setQuestions] = React.useState([])
+  const [end, setEnd] = React.useState(false)
 
   React.useEffect(function () {
-    fetch('https://opentdb.com/api.php?amount=10&type=multiple')
+    fetch('https://opentdb.com/api.php?amount=5&type=multiple')
       .then(res => res.json())
       .then(data => data.results.map(item => {
         return {
@@ -70,45 +71,65 @@ function App() {
         question={item}
         key={item.question}
         id={item.question}
-        click={click} />
+        click={click}
+        end={end} />
     )
   }
   )
 
 
   function click(id, idanswer) {
-    console.log(idanswer)
-    console.log(questions)
-    const check = questions.map(item => {
-      if (item.question === id) {
-        console.log("mam")
-        item.answers.map(item => {
-          if (item.answer === idanswer) { console.log("tutaj zmieniam na true") }
-          else { console.log("tutaj zmieniam na false") }
-
-        })
+    let clickTrue = questions.map(item => {
+      if (id === item.question) {
+        return {
+          ...item,
+          answers: item.answers.map(item => {
+            if (idanswer === item.answer) { return { ...item, click: true } }
+            else { return { ...item, click: false } }
+          })
+        }
       }
-      else { console.log("nie mam") }
+      else { return { ...item } }
     })
-    console.log(check)
+    setQuestions(clickTrue)
+
   }
 
   function Start() {
-    setStart(item => !item)
+    setStart(true)
+    setRender(render + 1)
+    setEnd(false)
   }
+  function Reset() {
+    setStart(false)
+    setEnd(false)
+  }
+  function newQuestion() {
+    setRender(render + 1)
+    setEnd(false)
+  }
+  function check() {
+    setEnd(true)
+  }
+
+  var points = 0
+  var howManyQuestion = questions.length
+  var checkPoints=questions.map(item=>{
+  item.answers.map(item=>{
+    if(item.correct && item.click){points++}
+  })
+  })
 
 
 
 
   return (
-
-
-
     <div className='main '>
-      {start ? <div>{rQuestion}</div> : <div className="center"> <button className="button-85" role="button" onClick={Start}>START</button></div>}
+      {start ?
+        <div>{rQuestion}<NavBar end={end} points={points} howManyQuestion={howManyQuestion} reset={Reset} new={newQuestion} check={check} /></div>
+        :
+        <div className="center"> <button className="button-85" role="button" onClick={Start}>START</button></div>}
     </div>
-
-
   )
 }
 
